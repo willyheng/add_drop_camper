@@ -1,0 +1,3 @@
+*.yaml
+.ipynb_checkpoints/
+*.log
