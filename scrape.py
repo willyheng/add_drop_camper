@@ -66,7 +66,7 @@ if __name__ == "__main__":
     
     # Option 2: Run locally on Mac/PC with Firefox (needs geckodriver to be in PATH)
     #options = Options()
-    #options.headless = True    
+    #options.headless = True   # optional, running headless = False will allow you to see browser and actions 
     #driver = webdriver.Firefox(options=options)
 
     driver.get(LOGIN_URL)
