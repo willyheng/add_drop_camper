@@ -43,22 +43,22 @@ def found_course(driver, course_code, stream_id):
             logging.info("Success @ {}".format(strftime("%Y-%m-%d %H:%M:%S", gmtime())))
             return True
         
-    print("No spaces available @ {}".format(strftime("%Y-%m-%d %H:%M:%S", gmtime())))
+    #print("No spaces available @ {}".format(strftime("%Y-%m-%d %H:%M:%S", gmtime())))
     return False
 
 if __name__ == "__main__":
     # Get settings
     data = yaml.safe_load(open("pwd.yaml"))
     SITE_URL = data['SITE_URL']
-    LOGIN_URL = data['LOGIN_URL']
-    CRAWL_URL = data['CRAWL_URL']
+    LOGIN_URL = SITE_URL + "/registrar-student/sections/ViewSections.tap"
+    CRAWL_URL = SITE_URL + "/registrar-student/sections/ViewSections.tap?service=direct&service=1&service=sectionsTable.sectionsTable.tableElement.tablePages.linkPage&sp=Asections%2FViewSections%2FsectionsTable.sectionsTable.tableElement.tableView&sp=2"
     USERNAME = data['username']
     PASSWORD = data['password']
     
     logging.basicConfig(filename='results.log', level=logging.INFO)
     target_elective = 'E326'
     target_stream = 4
-    delay = 5
+    delay = 2
     log_delay = 5 #mins
 
     # Option 1: Run using Docker Chrome, suitable for remote (see README for instructions)
@@ -81,6 +81,7 @@ if __name__ == "__main__":
         if count >= log_delay * 60 / delay:
             count = 0
             logging.info("Scraper running at {}".format(strftime("%Y-%m-%d %H:%M:%S", gmtime())))
+            #print("No spaces available @ {}".format(strftime("%Y-%m-%d %H:%M:%S", gmtime())))
         
     print("Program terminated")
         

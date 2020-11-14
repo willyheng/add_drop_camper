@@ -4,12 +4,13 @@ Helps camp for modules during add/drop for studies.
 
 Uses Selenium together with Chrome or Firefox to periodically check for updates on the target site. 
 Does not typically work out of the box, as the relevant links and beautifulsoup searches will have to be heavily modified for the program to work.
+Program will run until target module is obtained.
 
 ## Instructions
 
 #### Step 1. Create a `pwd.yaml` file and replace with relevant information
 
-`printf "username:<user>\npassword:<pass>\nSITE_URL:<url>\nLOGIN_URL:<url>\nCRAWL_URL:<url>" > pwd.yaml`
+`printf "username:<user>\npassword:<pass>\nSITE_URL:<url>" > pwd.yaml`
 
 #### Step 2. Install relevant python packages
 
