@@ -11,6 +11,8 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium import webdriver
 import re
 from time import gmtime, strftime, sleep
 import yaml
@@ -56,12 +58,17 @@ if __name__ == "__main__":
     logging.basicConfig(filename='results.log', level=logging.INFO)
     target_elective = 'E326'
     target_stream = 4
-    options = Options()
-    options.headless = True    
     delay = 5
     log_delay = 5 #mins
 
-    driver = webdriver.Firefox(options=options)
+    # Option 1: Run using Docker Chrome, suitable for remote (see README for instructions)
+    driver = webdriver.Remote("http://127.0.0.1:4444/wd/hub", DesiredCapabilities.CHROME)
+    
+    # Option 2: Run locally on Mac/PC with Firefox (needs geckodriver to be in PATH)
+    #options = Options()
+    #options.headless = True    
+    #driver = webdriver.Firefox(options=options)
+
     driver.get(LOGIN_URL)
     
     site_login()
