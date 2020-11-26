@@ -12,12 +12,24 @@ Program will run until target module is obtained.
 
 `printf "username:<user>\npassword:<pass>\nSITE_URL:<url>" > pwd.yaml`
 
+If you already have an existing `pwd.yaml`, you can upload using ssh through
+
+`scp pwd.yaml root@<IP addr>:<target_directory>`
+
 #### Step 2. Install relevant python packages
 
 *Note that most OSX and Ubuntu comes pre-installed with Python, 
 however if yours does not, you will need to install Python and Pip before doing this step***
 
-`pip install selenium beautifulsoup4 pyyaml`
+If pip is not installed
+
+`sudo apt update`
+
+`sudo apt install python3-pip`
+
+Then run: 
+
+`pip3 install selenium beautifulsoup4 pyyaml`
 
 ## Option 1: Running using Docker with Selenium and Chrome
 
@@ -36,10 +48,10 @@ This method is less dependent on the environment, which the author's experience 
 
 `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -`
 
-`sudo add-apt-repository \
+```sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
-   stable"`
+   stable"```
    
 `sudo apt-get install docker-ce docker-ce-cli containerd.io`
 
@@ -61,6 +73,10 @@ driver = webdriver.Remote("http://127.0.0.1:4444/wd/hub", DesiredCapabilities.CH
 #### Step 7. Run code
 
 `python3 scrape.py`
+
+To run in background, so it continues after ssh is disconnected
+
+`nohup python3 scrape.py &`
 
 ## Option 2: Running on local installation of Firefox and geckodriver
 
